@@ -11,6 +11,8 @@ As title.
 * 每个模块(除了common)打出的fat jar都是对等的，没有任何从属关系。都是可执行文件，都包含cluster.xml, Mail-Class都是common.Laucher, Main-Verticle各不相同。
 * End to end case
   * GET /operations 会到trader-dashboard，trader-dashboard会转发给audit-service, trader-dashboard REST call to audit-service. audit-servive的职责就是访问audit数据库
+  * /eventbus/*不知道trader-dashboard如何处理的？不知道前端JS代码是如何和trader-dashboard通信的。
+  * 
 * quote-generator:
   * GeneratorConfigVertile是主Verticle. 在启动的时候，负责部署另外两个Verticle: MarketDataVerticle 和 RestQuoteAPIVerticle.
   * 主Verticle是在pom.xml中配置的。相应信息会生成到JAR中META-INF/MANIFEST.MF中.
