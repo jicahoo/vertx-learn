@@ -9,3 +9,4 @@ As title.
 * quote-generator:
   * GeneratorConfigVertile是主Verticle. 在启动的时候，负责部署另外两个Verticle: MarketDataVerticle 和 RestQuoteAPIVerticle.
   * 主Verticle是在pom.xml中配置的。相应信息会生成到JAR中META-INF/MANIFEST.MF中.
+  * 执行入口也在MANIFEST.MF中指定`Main-Class: io.vertx.workshop.common.Launcher`
