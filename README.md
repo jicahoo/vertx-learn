@@ -12,7 +12,7 @@ As title.
 * End to end case
   * GET /operations 会到trader-dashboard，trader-dashboard会转发给audit-service, trader-dashboard REST call to audit-service. audit-servive的职责就是访问audit数据库
   * /eventbus/\*不知道trader-dashboard如何处理的？不知道前端JS代码是如何和trader-dashboard通信的?
-  * GET /discovery. 不清楚如何处理，vertx的microservice自带?
+  * GET /discovery. 不清楚如何处理，vertx的microservice自带?
   * GET /\* 其他的都会识别为静态文件(HTML,JS)，在trader-dashboard中，由vertx-web提供的StaticHandler来处理。也是在trader-dashboard中注册的这个Handler.
 * quote-generator:
   * GeneratorConfigVertile是主Verticle. 在启动的时候，负责部署另外两个Verticle: MarketDataVerticle 和 RestQuoteAPIVerticle.
