@@ -17,6 +17,7 @@ As title.
 * quote-generator:
   * GeneratorConfigVertile是主Verticle. 在启动的时候，负责部署另外两个类型的Verticle: MarketDataVerticle 和 RestQuoteAPIVerticle。MarketDataVerticle是和公司对应的，配置文件config.json中，共有3个公司，所以，会有三个MarketDataVerticle实例。
   * 127.0.0.1:35000访问的是RestQuoteAPIVerticle, 这个Verticle具有HTTP Endpoint.
+  * RestQuoteAPIVertilce会从EventBus中消费地址为`market`的消息。消息源是三个MarketDataVerticle， MarketDataVerticle各自每隔一段时间会发布新的数据。
   * 主Verticle是在pom.xml中配置的。相应信息会生成到JAR中META-INF/MANIFEST.MF中.
   * 执行入口也在MANIFEST.MF中指定`Main-Class: io.vertx.workshop.common.Launcher`
 * trader-dashboard是主要使用了vertx web扩展的功能，webroot文件夹就是vertx web规定的。要注意的是vert是core加一堆扩展。http://vertx.io/docs/vertx-web/java/
