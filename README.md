@@ -22,5 +22,8 @@ As title.
   * 执行入口也在MANIFEST.MF中指定`Main-Class: io.vertx.workshop.common.Launcher`
 * trader-dashboard是主要使用了vertx web扩展的功能，webroot文件夹就是vertx web规定的。要注意的是vert是core加一堆扩展。http://vertx.io/docs/vertx-web/java/
 * audit-service.
+* portfolio: （个人或机构的)投资组合，有价证券组合
+  * 提供一个PortfolioService,  其他组件，可以发现和使用这个Service, 得到这个Service之后，就可以调用buy,sell，进行股票交易。进行股票交易的时候，PortfolioService也会将交易信息以消息的方式发布在EventBus上，消息地址是PortforlioServier.EVENT\_ADDRESS="portfolio".
+  * TraderUtils类会调用PortfolioService进行股票交易
 * Others:
   * publish有两个意义，有时候是发布消息到EventBus, 有的时候，是发布一个Service (MicroService, Service Discovery)
