@@ -27,3 +27,5 @@ As title.
   * TraderUtils类会调用PortfolioService进行股票交易
 * Others:
   * publish有两个意义，有时候是发布消息到EventBus, 有的时候，是发布一个Service (MicroService, Service Discovery)
+* 启动与测试
+  * 如果只启动protfolio和trader-dashboard, 访问页面的时候，trader-dashboard会报错。要和quote-generator一起起来，可以比较正常的工作
