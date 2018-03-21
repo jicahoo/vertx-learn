@@ -26,9 +26,9 @@ As title.
   * 提供一个PortfolioService,  其他组件，可以发现和使用这个Service, 得到这个Service之后，就可以调用buy,sell，进行股票交易。进行股票交易的时候，PortfolioService也会将交易信息以消息的方式发布在EventBus上，消息地址是PortforlioServier.EVENT\_ADDRESS="portfolio".
   * TraderUtils类会调用PortfolioService进行股票交易
   * 在实现PortfolioServiceImpl的时候，实现computeEvaluation和getValueForCompany的时候，遇到一些问题。
-    * 一是异常处理，每次塞正常逻辑的Handler了时，你也要随后塞一个异常处理的Handler。这也是异步环境下，异常处理的基本方法。开始的时候，我没有给bodyHandler加对应的exceptionHandler.
-    * 二是你在拿Future结果的时候，不仅要检测是否完成，也要检测是否成功；不成功，你会得到Throable，你可以打印它，或则用其他方式处理。
-    * 三是一定要注意异步执行的顺序。在下面的代码中，client.get的Handler肯定先执行，拿到HTTP状态码，bodyHandler的代码是随后在某个时间点执行的。所以，你在client.get的Handler里面拿Future的值，肯定是未完成的，结果也是null.
+    * 一是异常处理，每次塞正常逻辑的Handler了时，你也要随后塞一个异常处理的Handler。这也是异步环境下，异常处理的基本方法。开始的时候，我没有给bodyHandler加对应的exceptionHandler.
+    * 二是你在拿Future结果的时候，不仅要检测是否完成，也要检测是否成功；不成功，你会得到Throable，你可以打印它，或则用其他方式处理。
+    * 三是一定要注意异步执行的顺序。在下面的代码中，client.get的Handler肯定先执行，拿到HTTP状态码，bodyHandler的代码是随后在某个时间点执行的。所以，你在client.get的Handler里面拿Future的值，肯定是未完成的，结果也是null.
     ```java
         client.get("/name="+encode(company), resp -> {
       //Handle the exception when reading response.
