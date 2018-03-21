@@ -25,6 +25,9 @@ As title.
 * portfolio: （个人或机构的)投资组合，有价证券组合
   * 提供一个PortfolioService,  其他组件，可以发现和使用这个Service, 得到这个Service之后，就可以调用buy,sell，进行股票交易。进行股票交易的时候，PortfolioService也会将交易信息以消息的方式发布在EventBus上，消息地址是PortforlioServier.EVENT\_ADDRESS="portfolio".
   * TraderUtils类会调用PortfolioService进行股票交易
+* compulsive-traders: MainVerticle会部署另外三个Verticle实例，两个是Java版的交易者，一个是groovy版的交易者。
+  * Java版的交易者, 会拿到两个依赖的服务：一个是PortfolioService, 一个是market-data服务对应的MessageConsumer,是为了接收MakketDataVertilce在地址"market"上发布的消息。都会通过异步的方式去拿到这两个依赖。如果任何一个依赖失败，就会通知该Verticle部署失败。如果依赖都成功获得，就会监听"market"地址上的消息，消息来了就尝试进行一次交易。
+
 * Others:
   * publish有两个意义，有时候是发布消息到EventBus, 有的时候，是发布一个Service (MicroService, Service Discovery)
 * 启动与测试
