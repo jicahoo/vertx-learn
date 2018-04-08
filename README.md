@@ -3,6 +3,7 @@ As title.
 
 ## Examples
 * http://escoffier.me/vertx-hol/ 
+  * My fork: https://github.com/jicahoo/vertx-microservices-workshop.git
 * https://github.com/vert-x3/vertx-examples
 
 
