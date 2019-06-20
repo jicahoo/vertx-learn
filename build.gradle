@@ -1,0 +1,14 @@
+plugins {
+  id 'java'
+}
+
+repositories {
+  jcenter()
+}
+
+version = '3.7.1'
+
+dependencies {
+  compile "io.vertx:vertx-core:3.7.1"
+}
+
